@@ -1,0 +1,97 @@
+# put in ~/.zshrc
+# test -f ~/.myzsh && . ~/.myzsh
+
+# aliases
+alias mv='mv -i'
+alias cp='cp -i'
+alias h='history'
+alias j='jobs'
+alias l='ls -alhFG --group-directories-first' #-X sort file extension
+alias o='less'
+# dpkg -l list the package / dpkg -L list installed files
+alias au="tmux new-session -s update 'sudo apt-get update && sudo apt-get dist-upgrade'"
+alias ai='sudo apt-get install'
+alias as='aptitude search'
+alias aa='sudo apt-get autoremove'
+alias ap='sudo apt-get purge'
+alias ao='apt-cache show'
+alias al='apt-get changelog'
+alias sf='xset dpms force off'
+
+alias todos='cd ~/Desktop && ls -1t'
+alias s='cd /home/liren/stash'
+alias py='python3.5 -i -q'
+alias ipy='ipython3 --no-confirm-exit -i' #--no-banner  ipython --pylab OR In [1]:%pylab
+alias gop='python3 -i ~/stash/lec.py'
+alias goc='gcc -std=c11 -o hello_c hello.c && echo "==============================" && ./hello_c && echo "\n=============================="'
+alias gocpp='g++ -std=c++11 -o hello_cpp hello.cpp && ./hello_cpp'
+# vpntech@s[1234].avpn.us:2224, 3846721
+alias vpntech='echo "password: 3846721" && ssh -qfTNC -D 1080 -p 2224 vpntech@s2.avpn.us' #-D 7070
+alias mp3tag='mid3iconv -e GBK'
+alias coe='ssh lhuang@gateway.coe.neu.edu'
+alias dots='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+
+
+if [[ -o interactive ]]; then
+    # colorful man page
+    man() {
+        env LESS_TERMCAP_mb=$'\E[01;31m' \
+            LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+            LESS_TERMCAP_me=$'\E[0m' \
+            LESS_TERMCAP_se=$'\E[0m' \
+            LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 7) \
+            LESS_TERMCAP_ue=$'\E[0m' \
+            LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+            man "$@"
+    }
+
+    #export TERM=xterm-256color
+    #setxkbmap -option ctrl:nocaps
+    #gamma
+    unsetopt nomatch
+    fortune -a
+fi
+
+#export PATH=${HOME}/bin:$PATH
+export PATH="/home/liren/.local/bin:$PATH"
+
+# OracleJDK #JAVA_HOME doesn't need to go into bin
+export JAVA_HOME=/home/liren/app/jdk
+export PATH=${JAVA_HOME}/bin:$PATH
+
+export FED=192.168.56.101
+
+# OpenJDK
+# export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+
+# JAYATANA
+# unset JAVA_TOOL_OPTIONS, unset CLASSPATH
+
+# CS61A
+alias oq='python3 ok --local -q'
+
+# CS61B
+export CS61B_LIB_DIR="/home/liren/courses/cs61b/cs61b_repo/lib/*"  #must have "" and a trailing *; /lib is not accepted
+export CLASSPATH="$CS61B_LIB_DIR:$CLASSPATH"
+alias gjdb='java ucb.gjdb.GJDB'
+alias cs='python /home/liren/courses/cs61b/cs61b_repo/lib/style61b.py *.java'
+alias repob='cd ~/courses/cs61b/cs61b_repo/'
+alias jg='java StaffGitlet'
+
+# alg4
+export PATH=~/courses/algs4/bin:$PATH
+
+#CS61C
+alias repoc='cd ~/courses/cs61c/cs61c_repo/'
+
+#CS145(DB)
+alias jn='cd /home/liren/courses/cs145_db/cs145-notebooks && jupyter notebook'
+
+# alias zsql='mysql -h aaq34on0mmcpq4.ce6c6xtnikqk.us-west-2.rds.amazonaws.com -P 3306 -u root546 -p123ertDFG'
+
+#export TOMCAT_HOME=~/app/tomcat  # no trailing / !
+
+#INFO7374
+alias jup='cd /home/liren/neu_courses/INFO7374/DataAnalysisPython && jupyter notebook'
+export _DATA="/home/liren/neu_courses/INFO7374/DataAnalysisPython/data/"
+alias 7374='cd /home/liren/neu_courses/INFO7374'
