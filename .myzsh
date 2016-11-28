@@ -30,7 +30,7 @@ alias vpntech='echo "password: 3846721" && ssh -qfTNC -D 1080 -p 2224 vpntech@s2
 alias mp3tag='mid3iconv -e GBK'
 alias coe='ssh lhuang@gateway.coe.neu.edu'
 alias dots='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
-
+alias eye='open ~/Pictures/oo.jpg'
 
 if [[ -o interactive ]]; then
     # colorful man page
