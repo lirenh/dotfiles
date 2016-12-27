@@ -115,8 +115,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export LD_LIBRARY_PATH=/home/liren/cv/cuda/lib64
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/liren/.sdkman"
-[[ -s "/home/liren/.sdkman/bin/sdkman-init.sh" ]] && source "/home/liren/.sdkman/bin/sdkman-init.sh"
+man() {
+        env LESS_TERMCAP_mb=$'\E[01;31m' \
+            LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+            LESS_TERMCAP_me=$'\E[0m' \
+            LESS_TERMCAP_se=$'\E[0m' \
+            LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 7) \
+            LESS_TERMCAP_ue=$'\E[0m' \
+            LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+            man "$@"
+    }
