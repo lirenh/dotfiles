@@ -85,7 +85,3 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 test -f ~/.myzsh && . ~/.myzsh
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/liren/.sdkman"
-[[ -s "/home/liren/.sdkman/bin/sdkman-init.sh" ]] && source "/home/liren/.sdkman/bin/sdkman-init.sh"
