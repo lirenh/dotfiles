@@ -1,0 +1,156 @@
+! $xrdb .Xresources
+! GRUVBOX
+! hard contrast: *background: #1d2021
+!*background: #282828
+*background: #1d2021
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+!*color8:  #928374
+*color8:  #55585a
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+!*color7:  #a89984
+*color7:  #d3d7cf
+*color15: #ebdbb2
+URxvt.color24:  #076678
+URxvt.color66:  #427b58
+URxvt.color88:  #9d0006
+URxvt.color96:  #8f3f71
+URxvt.color100: #79740e
+URxvt.color108: #8ec07c
+URxvt.color109: #83a598
+URxvt.color130: #af3a03
+URxvt.color136: #b57614
+URxvt.color142: #b8bb26
+URxvt.color167: #fb4934
+URxvt.color175: #d3869b
+URxvt.color208: #fe8019
+URxvt.color214: #fabd2f
+URxvt.color223: #ebdbb2
+URxvt.color228: #f2e5bc
+URxvt.color229: #fbf1c7
+URxvt.color230: #f9f5d7
+URxvt.color234: #1d2021
+URxvt.color235: #282828
+URxvt.color236: #32302f
+URxvt.color237: #3c3836
+URxvt.color239: #504945
+URxvt.color241: #665c54
+URxvt.color243: #7c6f64
+URxvt.color244: #928374
+URxvt.color245: #928374
+URxvt.color246: #a89984
+URxvt.color248: #bdae93
+URxvt.color250: #d5c4a1
+
+!use tput colors to check
+URxvt.termName: rxvt-256color
+!URxvt.font: xft:Terminus:12
+!URxvt.font: xft:monospace:size=11
+!URxvt.font:xft:Bitstream Vera Sans Mono-12,xft:WenQuanYi Bitmap Song-12
+!URxvt.boldFont:xft:Bitstream Vera Sans Mono-12:Bold,xft:WenQuanYi Bitmap Song-12:Bold
+URxvt.font:xft:Noto Mono-12,xft:WenQuanYi Bitmap Song-12
+URxvt.boldFont:xft:Noto Mono-12:Bold,xft:WenQuanYi Bitmap Song-12:Bold
+
+URxvt.letterSpace: -1
+
+URxvt.geometry: 80x50
+URxvt.saveLines: 10000
+URxvt.cutchars: "()*,<>[]{}|''"
+
+! extension
+!
+URxvt.perl-ext-common: default,matcher,searchable-scrollback
+!URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/+$2 \\Q$1\\E/
+URxvt.skipBuiltinGlyphs: true
+URxvt.url-launcher: /usr/bin/google-chrome
+!ctrl+left click
+URxvt.matcher.button: C1
+!URxvt*colorUL: orange
+
+
+! scrollbar
+!
+! enable scrollbar
+URxvt*scrollBar:          true
+! scrollbar width
+URxvt*thickness:          10
+! scrollbar color
+URxvt*scrollColor:        #464646
+! scrollbar trough area color
+!URxvt*troughColor:        #333333
+! scrollbar without a trough
+!URxvt*scrollBar_floating: false
+! scrollbar to the right
+URxvt*scrollBar_right:    true
+! scrollbar style
+URxvt*scrollstyle:        plain
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+! disable the scrollback buffer for the secondary screen
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+!URxvt.secondaryWheel: 1
+
+
+!Disables the annoying Ctrl+Shift shortcut
+URxvt.iso14755:         False
+URxvt.visualBell: false
+! ! URxvt spells "eightBitInput" as "meta8" and defaults it to false
+! ! URxvt.depth: 32
+URxvt.internalBorder: 2 
+URxvt*externalBorder: 0
+
+
+! Layout
+rofi.width:                          50
+rofi.lines:                          15
+rofi.columns:                        1
+rofi.color-enabled:                  true
+rofi.color-normal:                   #282828,#ebdbb2,#353535,#458588,#ebdbb2
+rofi.color-urgent:                   #282828,#d79921,#353535,#d79921,#282828
+rofi.color-active:                   #282828,#ebdbb2,#353535,#458588,#ebdbb2
+rofi.color-window:                   #282828,#458488
+
+! Behaviour
+rofi.terminal:                       urxvt
+rofi.levenshtein-sort:               true
+rofi.fuzzy:                          true
+rofi.kb-cancel:                      Escape,Control+c
+
+! Font settings
+Xft.hintstyle:              hintslight
+Xft.hinting:                true
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.lcdfilter:              lcdlight
+Xft.dpi:                    96
+
+
+
+
+
+! Id recommend "URxvt*variable". The difference is the dot specifies that a setting is a child of the URxvt class (ie directly below URxvt in the resource hierarchy), but the asterisk specifies that the variable or setting just a descendant of URxvt class meaning that it could be at any depth in the resource hierarchy.

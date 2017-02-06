@@ -45,8 +45,9 @@ bindsym $mod+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-#dirty hack to trick kde apps
-bindsym $mod+d exec env DESKTOP_SESSION=gnome XDG_CURRENT_DESKTOP=gnome dmenu_run
+# trick kde apps
+#bindsym $mod+d exec env DESKTOP_SESSION=gnome XDG_CURRENT_DESKTOP=gnome dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run
 
 # change focus
 bindsym $mod+j focus left
@@ -99,7 +100,8 @@ bindsym $mod+Shift+space floating toggle
 #bindsym $mod+d focus child
 
 
-set $ws1 "1:Terminal"
+#set $ws1 "1:Terminal"
+set $ws1 1
 set $ws2 2
 set $ws3 3
 set $ws4 4
@@ -193,32 +195,39 @@ bar {
 #bindsym $mod+e exec e default layout
 
 # Atuostart
-exec --no-startup-id i3-sensible-terminal
+#exec --no-startup-id urxvtd -q -o -f
+#exec --no-startup-id i3-msg 'workspace $ws1; exec urxvt' 
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id e
-exec --no-startup-id compton --config
+#exec --no-startup-id compton -b --config .config/compton.conf 
 #exec --no-startup-id compton
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 #exec --no-startup-id gnome-session 
-#exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id gnome-settings-daemon
+#exec i3-msg 'workspace $ws2; exec google-chrome'
 
 #exec_always --no-startup feh --bg-fill ""
 exec_always --no-startup-id ~/.fehbg
 #exec --no-startup-id conky
 
 # Custom keybindings
-bindsym $mod+F2 exec --no-startup-id e
-bindsym $mod+F3 exec --no-startup-id google-chrome-stable
+bindsym $mod+z exec --no-startup-id e
+bindsym $mod+x exec --no-startup-id google-chrome
+bindsym $mod+c exec --no-startup-id nautilus
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
-bindsym Print exec "scrot -e 'mv $f ~/Screenshots'"
-bindsym $mod+Print exec "scrot -ue 'mv $f ~/Screenshots'"
+bindsym Print exec "scrot -e 'mv $f ~/Pictures/Screenshots'"
+bindsym $mod+Print exec "scrot -ue 'mv $f ~/Pictures/Screenshots'"
+bindsym --release button2 kill
+bindsym button3 floating toggle
+bindsym $mod+a [urgent=latest] focus
 
 hide_edge_borders vertical
 
-# $ws1
-assign [class="Rhythmbox"] 10
+# assign specific workspaces, use xprop to get WM_CLASS
+assign [class="Thunderbird"] $ws10
+for_window [class="Thunderbird"] focus
 
 
 # Open specific applications in floating mode
@@ -248,11 +257,31 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 #for_window [class="VirtualBox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-
-# switch to workspace with urgent window automatically
+#for_window [class="mpv"] floating enable
+for_window [class="Org.gnome.SoundRecorder"] floating enable
+#switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-# #454e77
+# #454e77 4c7899
 # class                 border  backgr. text    indicator child_border
-#client.focused          #4c7899 #150041 #ffffff #2e9ef4   #285577
+#client.focused          #adadad #adadad #ffffff #2e9ef4   #285577
 #for_window [class="^.*"] border pixel 0
+
+# no border, keep titlebar
+new_window normal 1
+new_float normal 1
+
+# Pulse Audio controls with pactl
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Screen brightness controls with backlight script
+bindsym XF86MonBrightnessUp exec "backlight -inc 40; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "backlight -dec 40; notify-send 'brightness down'"
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
