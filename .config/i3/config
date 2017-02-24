@@ -14,9 +14,8 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
-#font pango:Noto Sans CJK SC 9
-font pango:Ubuntu 8
-
+#font pango:Ubuntu 8
+font pango:DejaVu Sans 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -45,9 +44,9 @@ bindsym $mod+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-# trick kde apps
+# fake DE to trick kde apps
 #bindsym $mod+d exec env DESKTOP_SESSION=gnome XDG_CURRENT_DESKTOP=gnome dmenu_run
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id run-recent
 
 # change focus
 bindsym $mod+j focus left
@@ -64,7 +63,7 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
@@ -100,7 +99,7 @@ bindsym $mod+Shift+space floating toggle
 #bindsym $mod+d focus child
 
 
-#set $ws1 "1:Terminal"
+#set $ws1 "1:Terminal" #alias
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -187,48 +186,51 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         #position top
-        font pango:Ubuntu 10
+        font pango:DejaVu Sans 10
         
 }
 
-# my config
-#bindsym $mod+e exec e default layout
 
-# Atuostart
+##### Atuostart
 #exec --no-startup-id urxvtd -q -o -f
-#exec --no-startup-id i3-msg 'workspace $ws1; exec urxvt' 
+#exec --no-startup-id i3-msg 'workspace $ws1; exec urxvt'
+exec --no-startup-id monitor_config
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id e
-#exec --no-startup-id compton -b --config .config/compton.conf 
-#exec --no-startup-id compton
+exec --no-startup-id fcitx
+# compton -f fading
+exec --no-startup-id compton -b
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-#exec --no-startup-id gnome-session 
-exec --no-startup-id gnome-settings-daemon
-#exec i3-msg 'workspace $ws2; exec google-chrome'
+#exec --no-startup-id gnome-settings-daemon
 
-#exec_always --no-startup feh --bg-fill ""
-exec_always --no-startup-id ~/.fehbg
+#feh --bg-fill "pic.jpg"
+#exec_always --no-startup-id ~/.fehbg
 #exec --no-startup-id conky
 
 # Custom keybindings
-bindsym $mod+z exec --no-startup-id e
-bindsym $mod+x exec --no-startup-id google-chrome
-bindsym $mod+c exec --no-startup-id nautilus
+bindsym $mod+z exec --no-startup-id nautilus
+bindsym $mod+x exec --no-startup-id e
+bindsym $mod+c exec --no-startup-id chromium
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
-bindsym Print exec "scrot -e 'mv $f ~/Pictures/Screenshots'"
-bindsym $mod+Print exec "scrot -ue 'mv $f ~/Pictures/Screenshots'"
+bindsym $mod+Shift+l exec i3lock --color 000000
+#bindsym Print exec "scrot -e 'mv $f ~/Pictures/Screenshots'"
+#bindsym $mod+Print exec "scrot -ue 'mv $f ~/Pictures/Screenshots'"
+bindsym Print exec "gnome-screenshot -w"
+bindsym $mod+Print exec "gnome-screenshot -a"
 bindsym --release button2 kill
 bindsym button3 floating toggle
 bindsym $mod+a [urgent=latest] focus
 
-hide_edge_borders vertical
-
 # assign specific workspaces, use xprop to get WM_CLASS
 assign [class="Thunderbird"] $ws10
 for_window [class="Thunderbird"] focus
+assign [class="VirtualBox"] $ws9
+for_window [class="VirtualBox"] focus
 
+# hide title bar
+#for_window [class="^.*"] border pixel 0
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -262,11 +264,7 @@ for_window [class="Org.gnome.SoundRecorder"] floating enable
 #switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-# #454e77 4c7899
-# class                 border  backgr. text    indicator child_border
-#client.focused          #adadad #adadad #ffffff #2e9ef4   #285577
-#for_window [class="^.*"] border pixel 0
-
+hide_edge_borders vertical
 # no border, keep titlebar
 new_window normal 1
 new_float normal 1
@@ -277,11 +275,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Screen brightness controls with backlight script
-bindsym XF86MonBrightnessUp exec "backlight -inc 40; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "backlight -dec 40; notify-send 'brightness down'"
+#bindsym XF86MonBrightnessUp exec "backlight -inc 40; notify-send 'brightness up'"
+#bindsym XF86MonBrightnessDown exec "backlight -dec 40; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
+bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
+
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioPlay exec playerctl play
+#bindsym XF86AudioPause exec playerctl pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous

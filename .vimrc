@@ -1,7 +1,9 @@
+set nocompatible        "Turn off Vi compatibility
+set backspace=indent,eol,start    " Allow backspacing over everything in insert mode.
+filetype plugin on
 syntax on
 "colorscheme desert
-filetype plugin indent on  "Indentation rules for different filetypes
-set nocompatible        "Turn off Vi compatibility
+" filetype plugin indent on  "Indentation rules for different filetypes
 
 " DIMENSIONS
 "set lines=50        " Vim starts with this many lines
