@@ -23,8 +23,13 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # ssh keyring
-#if [ "$DESKTOP_SESSION" = i3 ];then
-#    eval $(gnome-keyring-daemon --start)
-#    export SSH_AUTH_SOCK
-#fi
+# if [ "$DESKTOP_SESSION" = i3 ];then
+#     eval $(gnome-keyring-daemon --start)
+#     export SSH_AUTH_SOCK
+# fi
 
+if [ "$DESKTOP_SESSION" = i3 ];then
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+    ssh-add ~/.ssh/id_rsa_ice
+fi

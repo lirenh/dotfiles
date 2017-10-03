@@ -87,3 +87,6 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh.d/general.sh
 grep -q Arch /etc/os-release && source $HOME/.zsh.d/arch.sh
 grep -q Ubuntu /etc/os-release && source $HOME/.zsh.d/ubuntu.sh
+
+# added by travis gem
+[ -f /home/liren/.travis/travis.sh ] && source /home/liren/.travis/travis.sh

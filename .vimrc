@@ -19,7 +19,7 @@ set showmode        " Show the current mode
 " NAVIGATION
 "set nu              " Set line numbering
 "set scrolloff=5     " Keep at least 5 lines above/below cursor
-"set mouse=a         " Enable mouse usage in all modes
+set mouse=a         " Enable mouse usage in all modes
 "set mousehide       " Hide the mouse when typing
 
 " SEARCHING

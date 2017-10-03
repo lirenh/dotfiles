@@ -197,26 +197,28 @@ bar {
 exec --no-startup-id monitor_config
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
+exec --no-startup-id parcellite
 exec --no-startup-id e
 exec --no-startup-id fcitx
 # compton -f fading
-exec --no-startup-id compton -b
+#exec --no-startup-id compton -CGb
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 #exec --no-startup-id gnome-settings-daemon
 
 #feh --bg-fill "pic.jpg"
-#exec_always --no-startup-id ~/.fehbg
+exec_always --no-startup-id ~/.fehbg
 #exec --no-startup-id conky
 
 # Custom keybindings
 bindsym $mod+z exec --no-startup-id nautilus
 bindsym $mod+x exec --no-startup-id e
-bindsym $mod+c exec --no-startup-id chromium
+bindsym $mod+c exec chromium
+bindsym $mod+b workspace back_and_forth
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 bindsym $mod+Shift+l exec i3lock --color 000000
-#bindsym Print exec "scrot -e 'mv $f ~/Pictures/Screenshots'"
-#bindsym $mod+Print exec "scrot -ue 'mv $f ~/Pictures/Screenshots'"
+#bindsym Print exec "scrot -ue 'mv $f ~/Pictures/Screenshots'"
+#bindsym $mod+Print exec "scrot -se 'mv $f ~/Pictures/Screenshots'"
 bindsym Print exec "gnome-screenshot -w"
 bindsym $mod+Print exec "gnome-screenshot -a"
 bindsym --release button2 kill
@@ -229,8 +231,8 @@ for_window [class="Thunderbird"] focus
 assign [class="VirtualBox"] $ws9
 for_window [class="VirtualBox"] focus
 
-# hide title bar
-#for_window [class="^.*"] border pixel 0
+# hide title bar pixel 0
+# for_window [class="^.*"] border pixel 1
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -267,6 +269,7 @@ for_window [urgent=latest] focus
 hide_edge_borders vertical
 # no border, keep titlebar
 new_window normal 1
+#new_window pixel 1
 new_float normal 1
 
 # Pulse Audio controls with pactl
@@ -275,10 +278,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Screen brightness controls with backlight script
-#bindsym XF86MonBrightnessUp exec "backlight -inc 40; notify-send 'brightness up'"
-#bindsym XF86MonBrightnessDown exec "backlight -dec 40; notify-send 'brightness down'"
-bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
-bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
+bindsym XF86MonBrightnessUp exec "backlight -inc 40; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "backlight -dec 40; notify-send 'brightness down'"
+#bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
+#bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
 
 
 # Media player controls
@@ -286,3 +289,5 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
 #bindsym XF86AudioPause exec playerctl pause
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
+# Touchpad controls
+#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
