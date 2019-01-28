@@ -2,6 +2,7 @@ set nocompatible        "Turn off Vi compatibility
 set backspace=indent,eol,start    " Allow backspacing over everything in insert mode.
 filetype plugin on
 syntax on
+set clipboard=unnamedplus  "CLIPBOARD buffer for X"
 "colorscheme desert
 " filetype plugin indent on  "Indentation rules for different filetypes
 

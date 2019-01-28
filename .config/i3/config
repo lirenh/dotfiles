@@ -278,8 +278,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Screen brightness controls with backlight script
-bindsym XF86MonBrightnessUp exec "backlight -inc 40; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "backlight -dec 40; notify-send 'brightness down'"
+#bindsym XF86MonBrightnessUp exec "backlight -inc 40; notify-send 'brightness up'"
+#bindsym XF86MonBrightnessDown exec "backlight -dec 40; notify-send 'brightness down'"
 #bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
 #bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
 

@@ -1,3 +1,4 @@
+alias yao='yaourt -Syu --aur'
 alias pacu='sudo pacman -Syu'
 alias paci='sudo pacman -S'
 alias pacid='sudo pacman -S --asdeps'

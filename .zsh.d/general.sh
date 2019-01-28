@@ -1,3 +1,4 @@
+#figlet
 alias mv='mv -i'
 alias cp='cp -i'
 alias h='history'
@@ -21,6 +22,9 @@ alias py='python3 -i -q'
 alias ipy='ipython3 --no-confirm-exit -i' #--no-banner  ipython --pylab OR In [1]:%pylab
 alias sue='sudo emacs -Q -nw'
 alias jshell='/usr/lib/jvm/java-9-openjdk/bin/jshell'
+alias mountv='sshfs -o IdentityFile=/home/liren/stash/vagrant/.vagrant/machines/control/virtualbox/private_key vagrant@192.168.0.2: /home/liren/stash/vagrant_control'
+
+function goc { make "$1" && ./"$1" }
 
 if [[ -o interactive ]]; then
     # colorful man page
@@ -67,7 +71,7 @@ export CLASSPATH=".:classes:$CS61B_LIB_DIR"
 alias cs='python ~/stash/src/javalib/style61b.py *.java'
 alias repob='cd ~/courses/cs61b/su16_repo'
 alias jg='java gitlet.Main'
-alias mjg='cd ~/courses/cs61b/idea_projects/gitlet/target/classes'
+alias mjg='cd ~/courses/cs61b/projects/gitlet/target/classes'
 # alg4 bin
 # export PATH=$HOME/courses/algs4/bin:$PATH
 
@@ -75,7 +79,7 @@ alias mjg='cd ~/courses/cs61b/idea_projects/gitlet/target/classes'
 alias repoc='cd ~/courses/cs61c/workspace/'
 
 #CS145(DB)
-# alias jn='cd ~/courses/cs145_db/cs145-notebooks && jupyter notebook'
+alias jn='cd ~/courses/cs145_db_su/cs145-notebooks-2016 && jupyter notebook'
 
 #CS70
 # alias jn='cd ~/courses/cs70/ && source venv/bin/activate && jupyter notebook fa14-hw'
@@ -105,6 +109,3 @@ source /home/liren/.local/bin/aws_zsh_completer.sh
 
 # load_ssh &> /dev/null
 
-# ruby
-gems=$(ruby -rubygems -e "puts Gem.user_dir")/bin
-export PATH="$gems":$PATH
