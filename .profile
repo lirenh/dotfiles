@@ -22,14 +22,14 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 # enable qt5ct
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
-# ssh keyring
+export EDITOR=/usr/bin/vim
+
 # if [ "$DESKTOP_SESSION" = i3 ];then
-#     eval $(gnome-keyring-daemon --start)
-#     export SSH_AUTH_SOCK
+#     eval "$(ssh-agent -s)"
+#     ssh-add ~/.ssh/id_rsa
+#     ssh-add ~/.ssh/id_rsa_ice
 # fi
 
-if [ "$DESKTOP_SESSION" = i3 ];then
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_rsa
-    ssh-add ~/.ssh/id_rsa_ice
-fi
+# default profile from Manjaro Gnome minimal
+# export QT_QPA_PLATFORMTHEME="qt5ct"
+# export EDITOR=/usr/bin/vim

@@ -1,4 +1,3 @@
-#figlet
 alias mv='mv -i'
 alias cp='cp -i'
 alias h='history'
@@ -7,9 +6,7 @@ alias l='ls -alhF --group-directories-first' #-X sort file extension
 alias o='less'
 alias sf='xset dpms force off'
 alias sc='sudo systemctl'
-alias todos='cd ~/Desktop && ls -1t'
 alias s='cd ~/stash'
-alias gop='python3 -i ~/stash/lec.py'
 # vpntech@s[1234].avpn.us:2224, 3846721 EXPIRED
 # alias vpntech='echo "password: 3846721" && ssh -qfTNC -D 1080 -p 2224 vpntech@s2.avpn.us' #-D 7070
 # alias mp3tag='mid3iconv -e GBK'
@@ -20,11 +17,12 @@ alias gcal='zenity --calendar'
 alias topdf='libreoffice --headless --invisible --convert-to pdf'
 alias py='python3 -i -q'
 alias ipy='ipython3 --no-confirm-exit -i' #--no-banner  ipython --pylab OR In [1]:%pylab
+alias pipi='pip3 install --user -U'
 alias sue='sudo emacs -Q -nw'
-alias jshell='/usr/lib/jvm/java-9-openjdk/bin/jshell'
-alias mountv='sshfs -o IdentityFile=/home/liren/stash/vagrant/.vagrant/machines/control/virtualbox/private_key vagrant@192.168.0.2: /home/liren/stash/vagrant_control'
+alias mountv='sshfs -o IdentityFile=/home/liren/stash/vagrant/.vagrant/machines/control/virtualbox/private_key vagrant@10.0.0.2: /home/liren/stash/vagrant_control'
 
-function goc { make "$1" && ./"$1" }
+# aws
+source /home/liren/.local/bin/aws_zsh_completer.sh
 
 if [[ -o interactive ]]; then
     # colorful man page
@@ -43,23 +41,10 @@ if [[ -o interactive ]]; then
     #setxkbmap -option ctrl:nocaps
     #gamma
     unsetopt nomatch
-    #fortune -a
+    fortune -a
+    #figlet TeXt
     zstyle ":completion:*:commands" rehash 1
 fi
-
-#export PATH=$HOME/bin:$PATH
-#export PATH=$HOME/.local/bin:$PATH
-
-# OracleJDK
-#export JAVA_HOME=$HOME/app/jdk
-#export PATH=$JAVA_HOME/bin:$PATH
-
-#export C=192.168.56.101 #centos7
-#export RAS=192.168.0.10 #raspberrypi
-alias sshpi='ssh pi@192.168.0.6'
-
-# OpenJDK
-# export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 
 # CS61A
 alias oq='python3 ok --local -q'
@@ -84,23 +69,6 @@ alias jn='cd ~/courses/cs145_db_su/cs145-notebooks-2016 && jupyter notebook'
 #CS70
 # alias jn='cd ~/courses/cs70/ && source venv/bin/activate && jupyter notebook fa14-hw'
 
-# alias rdsmysql='mysql -h aaq34on0mmcpq4.ce6c6xtnikqk.us-west-2.rds.amazonaws.com -P 3306 -u root -pXxX' EXPIRED
-
-# export LD_LIBRARY_PATH=$HOME/cv/cudnn/lib64
-# export CUDA_HOME=/home/liren/cuda
-
-# case "$TERM" in
-# rxvt-unicode-256color)
-# TERM=rxvt-unicode;;
-# xterm)
-# TERM=konsole-256color;;
-# esac
-
-# aws
-source /home/liren/.local/bin/aws_zsh_completer.sh
-#alias sshec2='ssh -i ~/.ssh/husky.pem ec2-user@ec2.neu-csye6225-spring2017-team-4.me'
-#alias sshec22='ssh -i ~/.ssh/hlr_ec2.pem ubuntu@52.14.71.242'
-
 # load_ssh() {
 # eval "$(ssh-agent -s)"
 # ssh-add ~/.ssh/id_rsa
@@ -108,4 +76,3 @@ source /home/liren/.local/bin/aws_zsh_completer.sh
 # }
 
 # load_ssh &> /dev/null
-
